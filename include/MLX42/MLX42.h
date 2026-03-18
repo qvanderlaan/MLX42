@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   MLX42.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*   By: qvan-der <qvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2025/11/16 13:00:19 by w2wizard      ########   odam.nl         */
+/*   Updated: 2026/03/18 15:36:34 by qvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -414,6 +414,14 @@ typedef enum mlx_settings
 	MLX_HEADLESS,			// Run in headless mode, no window is created. (NOTE: Still requires some form of window manager such as xvfb)
 	MLX_SETTINGS_MAX,		// Setting count.
 }	mlx_settings_t;
+
+/**
+ * Callback function used to handle character input (Unicode).
+ * 
+ * @param[in] codepoint The Unicode code point of the character.
+ * @param[in] param Additional parameter to pass on to the function.
+ */
+typedef void (*mlx_charfunc)(uint32_t codepoint, void* param);
 
 /**
  * Callback function used to handle scrolling.
@@ -951,6 +959,16 @@ MLX_API const mlx_texture_t* mlx_get_font(void);
  * @return Non-negative if found or -1 if not found.
  */
 MLX_API int32_t mlx_get_texoffset(char c);
+
+/**
+ * This function sets the char callback, which is called when a character is inputted
+ * from the keyboard. It gives you the unicode code point of the character.
+ * 
+ * @param[in] mlx The MLX instance handle.
+ * @param[in] func The char callback function.
+ * @param[in] param An additional optional parameter.
+ */
+MLX_API void mlx_char_hook(mlx_t* mlx, mlx_charfunc func, void* param);
 
 # ifdef __cplusplus
 }

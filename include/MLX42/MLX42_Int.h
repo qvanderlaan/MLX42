@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   MLX42_Int.h                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*   By: qvan-der <qvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/27 23:55:34 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/07/21 10:46:43 by sbos          ########   odam.nl         */
+/*   Updated: 2026/03/18 15:36:52 by qvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,12 @@ typedef struct mlx_key
 	mlx_keyfunc		func;
 }	mlx_key_t;
 
+typedef struct mlx_char
+{
+	void*			param;
+	mlx_charfunc	func;
+}	mlx_char_t;
+
 typedef struct mlx_hook
 {
 	void*	param;
@@ -186,6 +192,7 @@ typedef struct mlx_ctx
 	mlx_mouse_t		mouse_hook;
 	mlx_cursor_t	cursor_hook;
 	mlx_key_t		key_hook;
+	mlx_char_t		char_hook;
 	mlx_resize_t	resize_hook;
 	mlx_close_t		close_hook;
 
